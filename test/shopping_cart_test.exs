@@ -62,5 +62,4 @@ defmodule ShoppingCart.CartTest do
 
     assert ShoppingCart.Recovery.get() == %{shirt: 1, jeans: 1}
   end
-
 end

@@ -43,5 +43,4 @@ defmodule ShoppingCart.Cart do
   def terminate(_reason, state) do
     ShoppingCart.Recovery.update(state)
   end
-
 end
