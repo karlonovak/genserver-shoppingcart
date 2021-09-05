@@ -45,4 +45,22 @@ defmodule ShoppingCart.CartTest do
       :exit, _ -> assert true
     end
   end
+
+  test "terminated GenServer should perserve its state in the Recovery agent" do
+    Cart.clear()
+    :shirt |> Cart.add_article()
+    :jeans |> Cart.add_article()
+    assert Cart.show_articles() == %{shirt: 1, jeans: 1}
+
+    try do
+      :doesnt_exist |> Cart.remove_article()
+      raise "GenServer didn't terminate"
+    catch
+      # GenServer terminated successfully as expected
+      :exit, _ -> assert true
+    end
+
+    assert ShoppingCart.Recovery.get() == %{shirt: 1, jeans: 1}
+  end
+
 end
