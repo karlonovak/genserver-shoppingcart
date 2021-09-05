@@ -8,6 +8,7 @@ defmodule ShoppingCart.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {ShoppingCart.Recovery, %{}},
       {ShoppingCart.Cart, %{}}
     ]
 

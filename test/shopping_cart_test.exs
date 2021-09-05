@@ -36,10 +36,9 @@ defmodule ShoppingCart.CartTest do
 
   test "if non-exiting article removed, GenServer should terminate" do
     Cart.clear()
-
-      #assert_raise RuntimeError, fn ->
-      #  :doesnt_exist |> Cart.remove_article
-      #end
+      assert_raise RuntimeError, fn ->
+        :doesnt_exist |> Cart.remove_article
+      end
   end
 
 end
