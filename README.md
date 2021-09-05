@@ -1,21 +1,27 @@
 # ShoppingCart GenServer Example
 
-**TODO: Add description**
+**Demonstrates GenServer usage in Elixir with a simple ShoppingCart as well as using Agent as a state recovery mechanism.**
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `shopping_cart` to your list of dependencies in `mix.exs`:
+## Usage
 
 ```elixir
-def deps do
-  [
-    {:shopping_cart, "~> 0.1.0"}
-  ]
-end
-```
+➜ iex -S mix         
+Erlang/OTP 24 [erts-12.0.3] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit]
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/shopping_cart](https://hexdocs.pm/shopping_cart).
+Interactive Elixir (1.12.2) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> alias ShoppingCart.Cart
+ShoppingCart.Cart
+iex(2)> Cart.show_articles
+%{}
+iex(3)> Cart.add_article(:shirt)
+:ok
+iex(4)> Cart.add_article(:shirt)
+:ok
+iex(5)> Cart.add_article(:jeans)
+:ok
+iex(6)> Cart.show_articles      
+%{jeans: 1, shirt: 2}
+iex(7)> Cart.remove_article(:shirt)
+%{jeans: 1, shirt: 1}
+```
 
